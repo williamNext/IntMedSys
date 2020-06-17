@@ -78,8 +78,13 @@ public class InteractionController implements Initializable {
                 } } });
 
         buscaAvancadaMenuItem.setOnMouseClicked(ev->{
-            root.getChildren().setAll(getAnchorPane("/fxml/buscaAvancada.fxml"));
+            try {
+                IntMedSys.changeScene(new FXMLLoader(getClass().getResource("/fxml/buscaAvancada.fxml")));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
+
 
     }
 

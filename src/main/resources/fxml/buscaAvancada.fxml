@@ -8,8 +8,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane fx:id="teste" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<AnchorPane fx:id="teste" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="intmedsys.controller.BuscaAvancadaController">
    <children>
+      <MenuBar prefHeight="25.0" prefWidth="640.0">
+         <menus>
+            <Menu>
+               <graphic>
+                  <Label fx:id="buscaMenuItem" text="Busca" />
+               </graphic>
+            </Menu>
+            <Menu>
+               <graphic>
+                  <Label fx:id="buscaAvancadaMenuItem" text="Busca Avançada" />
+               </graphic>
+            </Menu>
+         </menus>
+      </MenuBar>
       <TextField fx:id="medicamento" layoutX="32.0" layoutY="81.0" prefHeight="25.0" prefWidth="235.0" />
       <TableView fx:id="tabela" layoutX="290.0" layoutY="64.0" prefHeight="283.0" prefWidth="261.0">
          <columns>

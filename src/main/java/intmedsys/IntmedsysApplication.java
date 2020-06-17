@@ -1,5 +1,6 @@
 package intmedsys;
 
+import intmedsys.controller.BuscaAvancadaController;
 import intmedsys.model.InteracaoMedicamentosa;
 import intmedsys.service.InteracaoMedicamentosaService;
 import intmedsys.service.MedicamentoService;
@@ -26,4 +27,6 @@ public class IntmedsysApplication {
 	public InteracaoMedicamentosaService Interacaoservice() {
 		return new InteracaoMedicamentosaService() ;
 	}
+//	@Bean
+//	public BuscaAvancadaController buscaAvancadaController(){return new BuscaAvancadaController();}
 }
