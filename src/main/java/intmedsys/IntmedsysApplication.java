@@ -1,5 +1,7 @@
 package intmedsys;
 
+import intmedsys.model.InteracaoMedicamentosa;
+import intmedsys.service.InteracaoMedicamentosaService;
 import intmedsys.service.MedicamentoService;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.spring.SpringFxWeaver;
@@ -17,8 +19,11 @@ public class IntmedsysApplication {
 	Application.launch(IntMedSys.class);
 	}
 	@Bean
-	public MedicamentoService service() {
+	public MedicamentoService Medicamentoservice() {
 		return new MedicamentoService();
 	}
-
+	@Bean
+	public InteracaoMedicamentosaService Interacaoservice() {
+		return new InteracaoMedicamentosaService() ;
+	}
 }
