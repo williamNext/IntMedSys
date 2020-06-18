@@ -11,5 +11,5 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-#  main:
-#    web-application-type: none
+  main:
+    web-application-type: none

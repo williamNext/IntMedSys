@@ -20,7 +20,7 @@ public class HomeController {
     @ResponseBody
     public List<Medicamento> gets(){
         Medicamento med = new Medicamento();
-        med.setName("Bulbo");
+//        med.setName("Bulbo");
         MRepo.save(med);
         return MRepo.findAll();
     }

@@ -6,10 +6,8 @@ import intmedsys.repository.InteracaoMedicamentosaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class InteracaoMedicamentosaService {
@@ -23,5 +21,13 @@ public class InteracaoMedicamentosaService {
         List<InteracaoMedicamentosa> interacoesmedicamentoA= interacaoMedicamentosaRepository.findByIdMedicamentoA(medicamentos.get(0).getId());
         return interacoesmedicamentoA.stream().filter(it -> it.getIdMedicamentob() == medicamentos.get(1).getId())
                 .reduce((m, v) ->{ throw new NoSuchElementException();});
+    }
+
+    public List<Long> getInteractionList(Long id){
+        return interacaoMedicamentosaRepository.findAll().stream()
+                .filter(med ->  med.getIdMedicamentoA()==id).
+                map( i-> i.getIdMedicamentob())
+                .peek(System.out::println)
+                .collect(Collectors.toList());
     }
 }

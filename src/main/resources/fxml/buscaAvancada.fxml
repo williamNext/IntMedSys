@@ -30,7 +30,7 @@
       <TextField fx:id="medicamento" layoutX="32.0" layoutY="81.0" prefHeight="25.0" prefWidth="235.0" />
       <TableView fx:id="tabela" layoutX="290.0" layoutY="64.0" prefHeight="283.0" prefWidth="261.0">
          <columns>
-            <TableColumn fx:id="coluna" prefWidth="259.9999694824219" text="Interações" />
+            <TableColumn fx:id="coluna" prefWidth="259.9999694824219" text="Medicamentos" />
          </columns>
       </TableView>
       <Label layoutX="32.0" layoutY="64.0" text="Medicamento" />

@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,7 +17,7 @@ public class MedicamentoService {
     public List<String> getAll() {
         try{
             List<Medicamento> all = medicametoRepository.findAll();
-            return all.stream().map(Medicamento::getName).collect(Collectors.toList());
+            return all.stream().map(Medicamento::getNome).collect(Collectors.toList());
         }catch (Exception e){
             System.out.println(e.getMessage()+ "deu ruim");
         }
@@ -33,10 +31,17 @@ public class MedicamentoService {
         medicamentos.add(medb);
         return medicamentos;
     }
-    private Medicamento getByName(String name){
+    public Medicamento getByName(String name){
         return medicametoRepository.findByNome(name.strip().toUpperCase())
                                    .orElseThrow(IllegalStateException::new);
     }
+
+    public Medicamento getByid(Long id){
+        return medicametoRepository.getOne(id);
+    }
+    public List<Medicamento> getAllMeds(){
+        return medicametoRepository.findAll();
+    };
 
 
 }

@@ -1,19 +1,27 @@
 package intmedsys.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+
 public class Medicamento {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    long id;
-    String nome;
+    private long id;
+
+    private String nome;
 
     public Medicamento(){}
 
+    public Medicamento(Long id, String nome){
+        this.nome = nome;
+        this.id = id;
+    }
     public long getId() {
         return id;
     }
@@ -22,11 +30,11 @@ public class Medicamento {
         this.id = id;
     }
 
-    public String getName() {
+    public String getNome() {
         return nome;
     }
 
-    public void setName(String name) {
+    public void setNome(String name) {
         this.nome = name;
     }
 }

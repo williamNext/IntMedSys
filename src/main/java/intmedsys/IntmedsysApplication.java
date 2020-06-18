@@ -20,11 +20,11 @@ public class IntmedsysApplication {
 	Application.launch(IntMedSys.class);
 	}
 	@Bean
-	public MedicamentoService Medicamentoservice() {
+	public MedicamentoService medicamentoservice() {
 		return new MedicamentoService();
 	}
 	@Bean
-	public InteracaoMedicamentosaService Interacaoservice() {
+	public InteracaoMedicamentosaService interacaoservice() {
 		return new InteracaoMedicamentosaService() ;
 	}
 //	@Bean
