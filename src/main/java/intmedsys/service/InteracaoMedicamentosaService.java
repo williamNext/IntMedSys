@@ -11,10 +11,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class InteracaoMedicamentosaService {
-    @Autowired
-    InteracaoMedicamentosaRepository interacaoMedicamentosaRepository;
-    @Autowired
-    MedicamentoService medicamentoService;
+    @Autowired InteracaoMedicamentosaRepository interacaoMedicamentosaRepository;
+    @Autowired MedicamentoService medicamentoService;
 
     public Optional<InteracaoMedicamentosa> getInteracao(String medA, String medB){
         LinkedList<Medicamento> medicamentos = medicamentoService.getMedicamentos(medA, medB);
@@ -25,9 +23,8 @@ public class InteracaoMedicamentosaService {
 
     public List<Long> getInteractionList(Long id){
         return interacaoMedicamentosaRepository.findAll().stream()
-                .filter(med ->  med.getIdMedicamentoA()==id).
-                map( i-> i.getIdMedicamentob())
-                .peek(System.out::println)
+                .filter(med ->  med.getIdMedicamentoA()==id)
+                .map(InteracaoMedicamentosa::getIdMedicamentob)
                 .collect(Collectors.toList());
     }
 }

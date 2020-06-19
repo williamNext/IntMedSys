@@ -1,4 +1,4 @@
-package intmedsys.model;
+package intmedsys.utils.alerts;
 
 public enum AlertMessages {
     MESSAGE_NO_INTERACTION("Não há interação entre estes medicamentos."),

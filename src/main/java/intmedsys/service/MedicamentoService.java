@@ -11,9 +11,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class MedicamentoService {
+    @Autowired private MedicametoRepository medicametoRepository;
 
-    @Autowired
-    private MedicametoRepository medicametoRepository;
     public List<String> getAll() {
         try{
             List<Medicamento> all = medicametoRepository.findAll();
