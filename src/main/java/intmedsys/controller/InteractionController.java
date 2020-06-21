@@ -30,10 +30,13 @@ public class InteractionController implements Initializable, ScreenManager, Aler
     @FXML private TextField medicamentoA;
     @FXML private TextField medicamentoB;
     @FXML private TextArea descricaoField;
-    @FXML private Label adicionaMenuItem;
     @FXML private Label statusLabel;
     @FXML private Button buscar;
     @FXML private Label buscaAvancadaMenuItem;
+    @FXML private MenuItem removeInteracaoMenuItem;
+    @FXML private MenuItem addInteracaoMenuItem;
+    @FXML private  MenuItem addMedMenuItem;
+    @FXML private  MenuItem removeMedMenuItem;
     @Autowired private MedicamentoService medicamentoService;
     @Autowired private InteracaoMedicamentosaService interacaoMedicamentosaService;
 
@@ -45,8 +48,10 @@ public class InteractionController implements Initializable, ScreenManager, Aler
         buscar.setOnAction(event ->makeInteractionSearch());
 
         buscaAvancadaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
+;       addInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
+        addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
+        removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
 
-        adicionaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
     }
 
     private void makeInteractionSearch() {
@@ -77,6 +82,6 @@ public class InteractionController implements Initializable, ScreenManager, Aler
     }
 
     public List<String> getAll() {
-        return medicamentoService.getAll();
+        return medicamentoService.getAllMedsNames();
     }
 }

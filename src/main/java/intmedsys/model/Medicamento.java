@@ -18,9 +18,8 @@ public class Medicamento {
 
     public Medicamento(){}
 
-    public Medicamento(Long id, String nome){
+    public Medicamento(String nome){
         this.nome = nome;
-        this.id = id;
     }
     public long getId() {
         return id;

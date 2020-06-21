@@ -47,11 +47,14 @@ class IntmedsysApplicationTests {
 //			lista.add(byid);
 //		});
 //		lista.forEach(i-> System.out.println(i.getNome()));
-		interacaoMedicamentosaRepository.findByIdMedicamentoA(35).forEach(
-				e-> System.out.println(e.getIdMedicamentoA()+"/"+e.getIdMedicamentob())
-		);
-
-
-
+//		interacaoMedicamentosaRepository.findByIdMedicamentoA(35).forEach(
+//				e-> System.out.println(e.getIdMedicamentoA()+"/"+e.getIdMedicamentob())
+//		);
+		try {
+			Medicamento nome = medicamentoService.getByName("aciclovir");
+			System.out.println(nome.getNome());
+		}catch (Exception e){
+			System.out.println(e);
+		}
 	}
 }

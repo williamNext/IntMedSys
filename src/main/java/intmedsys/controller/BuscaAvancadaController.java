@@ -25,7 +25,10 @@ import java.util.ResourceBundle;
 public class BuscaAvancadaController implements Initializable, ScreenManager {
     @FXML private Label buscaMenuItem;
     @FXML private TextField medicamento;
-    @FXML private Label adicionaMenuItem;
+    @FXML private MenuItem removeInteracaoMenuItem;
+    @FXML private MenuItem addInteracaoMenuItem;
+    @FXML private  MenuItem addMedMenuItem;
+    @FXML private  MenuItem removeMedMenuItem;
     @FXML private TableView<Medicamento> tabela;
     @FXML private TableColumn<Medicamento, String> coluna;
     @FXML private Button buscar;
@@ -35,7 +38,7 @@ public class BuscaAvancadaController implements Initializable, ScreenManager {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TextFields.bindAutoCompletion(medicamento, medicamentoService.getAll());
+        TextFields.bindAutoCompletion(medicamento, medicamentoService.getAllMedsNames());
         this.meds = medicamentoService.getAllMeds();
 
         buscaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
@@ -43,8 +46,9 @@ public class BuscaAvancadaController implements Initializable, ScreenManager {
         buscar.setOnAction(actionEvent -> searchInteractionList());
 
         tabela.setOnMouseClicked(this::refreshTableList);
-
-        adicionaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
+        addInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
+        addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
+        removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
     }
 
     private void searchInteractionList() {

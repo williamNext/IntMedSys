@@ -11,7 +11,6 @@ import intmedsys.utils.screen.ScreenPath;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import org.controlsfx.control.textfield.TextFields;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -32,18 +30,24 @@ public class AdicionaInteracaoController  implements Initializable, ScreenManage
     @FXML private CheckBox addDescricaoCheckBox;
     @FXML private Label buscaMenuItem;
     @FXML private Label buscaAvancadaMenuItem;
+    @FXML private MenuItem removeInteracaoMenuItem;
+    @FXML private MenuItem addInteracaoMenuItem;
+    @FXML private  MenuItem addMedMenuItem;
+    @FXML private  MenuItem removeMedMenuItem;
     @Autowired private InteracaoMedicamentosaService interacaoMedicamentosaService;
     @Autowired MedicamentoService medicamentoService;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TextFields.bindAutoCompletion(medicamentoA, medicamentoService.getAll());
-        TextFields.bindAutoCompletion(medicamentoB, medicamentoService.getAll());
+        TextFields.bindAutoCompletion(medicamentoA, medicamentoService.getAllMedsNames());
+        TextFields.bindAutoCompletion(medicamentoB, medicamentoService.getAllMedsNames());
         descricaoTextArea.setDisable(true);
         buscaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
         buscaAvancadaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
         addDescricaoCheckBox.setOnAction(this::setDescriptionAvailable);
         btnSalvar.setOnAction(ev->tryToSaveInteraction().show());
+        addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
+        removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
     }
 
     private Alert tryToSaveInteraction() {

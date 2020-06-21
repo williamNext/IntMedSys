@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class MedicamentoService {
     @Autowired private MedicametoRepository medicametoRepository;
 
-    public List<String> getAll() {
+    public List<String> getAllMedsNames() {
         try{
             List<Medicamento> all = medicametoRepository.findAll();
             return all.stream().map(Medicamento::getNome).collect(Collectors.toList());
@@ -42,5 +42,11 @@ public class MedicamentoService {
         return medicametoRepository.findAll();
     };
 
+    public void save(Medicamento med){
+        medicametoRepository.save(med);
+    }
 
+    public List<Medicamento> getAll(){
+        return medicametoRepository.findAll();
+    }
 }
