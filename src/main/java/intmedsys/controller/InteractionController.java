@@ -55,14 +55,16 @@ public class InteractionController implements Initializable, ScreenManager, Aler
             makeAlert(Alert.AlertType.WARNING,"Atenção", AlertMessages.MESSAGE_BLANK_SPACE.getMessage()).show();
         }else{
             try {
-                checkInteraction(interacaoMedicamentosaService.getInteracao(medicamentoA.getText(),medicamentoB.getText()));
+                checkInteraction();
             }catch (IllegalStateException | NoSuchElementException ex){
                 makeAlert(Alert.AlertType.ERROR,"Atenção",AlertMessages.MESSAGE_NOT_FOUUND.getMessage()).show();
             }}
     }
 
 
-    private void checkInteraction(Optional<InteracaoMedicamentosa> interacao) {
+    private void checkInteraction() {
+        Optional<InteracaoMedicamentosa> interacao = interacaoMedicamentosaService
+                                                    .getInteracao(medicamentoA.getText(), medicamentoB.getText());
         if (interacao.isPresent()) {
             statusLabel.setText("COM INTERAÇÃO");
             statusLabel.setTextFill(Paint.valueOf("#ff1808"));

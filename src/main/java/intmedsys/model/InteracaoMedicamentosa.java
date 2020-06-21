@@ -16,7 +16,11 @@ public class InteracaoMedicamentosa {
 
     public InteracaoMedicamentosa() {
     }
-
+    public InteracaoMedicamentosa(String descricao,long idA,long idB) {
+        this.idMedicamentoA =idA;
+        this.idMedicamentob =idB;
+        this.descricao  = descricao;
+    }
     public long getId() {
         return id;
     }
