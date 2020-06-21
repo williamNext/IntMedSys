@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 public class BuscaAvancadaController implements Initializable, ScreenManager {
     @FXML private Label buscaMenuItem;
     @FXML private TextField medicamento;
+    @FXML private Label adicionaMenuItem;
     @FXML private TableView<Medicamento> tabela;
     @FXML private TableColumn<Medicamento, String> coluna;
     @FXML private Button buscar;
@@ -42,6 +43,8 @@ public class BuscaAvancadaController implements Initializable, ScreenManager {
         buscar.setOnAction(actionEvent -> searchInteractionList());
 
         tabela.setOnMouseClicked(this::refreshTableList);
+
+        adicionaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
     }
 
     private void searchInteractionList() {

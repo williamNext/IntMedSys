@@ -30,6 +30,7 @@ public class InteractionController implements Initializable, ScreenManager, Aler
     @FXML private TextField medicamentoA;
     @FXML private TextField medicamentoB;
     @FXML private TextArea descricaoField;
+    @FXML private Label adicionaMenuItem;
     @FXML private Label statusLabel;
     @FXML private Button buscar;
     @FXML private Label buscaAvancadaMenuItem;
@@ -44,6 +45,8 @@ public class InteractionController implements Initializable, ScreenManager, Aler
         buscar.setOnAction(event ->makeInteractionSearch());
 
         buscaAvancadaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
+
+        adicionaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
     }
 
     private void makeInteractionSearch() {
@@ -61,8 +64,9 @@ public class InteractionController implements Initializable, ScreenManager, Aler
 
     private void checkInteraction(Optional<InteracaoMedicamentosa> interacao) {
         if (interacao.isPresent()) {
-            statusLabel.setText("EXISTE INTERAÇÃO ENTRE ESTES MEDICAMENTOS");
+            statusLabel.setText("COM INTERAÇÃO");
             statusLabel.setTextFill(Paint.valueOf("#ff1808"));
+            makeAlert(Alert.AlertType.WARNING, "Atenção", AlertMessages.MESSAGE_HAS_INTERACTION.getMessage()).show();
         }else{
             statusLabel.setText("SEM INTERAÇÃO");
             statusLabel.setTextFill(Paint.valueOf("#75db00"));

@@ -25,6 +25,11 @@
                   <Label fx:id="buscaAvancadaMenuItem" text="Busca Avançada" />
                </graphic>
             </Menu>
+            <Menu>
+               <graphic>
+                  <Label fx:id="adicionaMenuItem" text="Adicionar Interação" />
+               </graphic>
+            </Menu>
          </menus>
       </MenuBar>
       <TextField fx:id="medicamento" layoutX="32.0" layoutY="81.0" prefHeight="25.0" prefWidth="235.0" />

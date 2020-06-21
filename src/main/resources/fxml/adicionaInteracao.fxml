@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="intmedsys.controller.AdicionaInteracaoController">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="642.0">
+         <menus>
+            <Menu>
+               <graphic>
+                  <Label fx:id="buscaMenuItem" text="Busca" />
+               </graphic>
+            </Menu>
+            <Menu>
+               <graphic>
+                  <Label fx:id="buscaAvancadaMenuItem" text="Busca Avançada" />
+               </graphic>
+            </Menu>
+            <Menu>
+               <graphic>
+                  <Label fx:id="adicionaMenuItem" text="Adicionar Interação" />
+               </graphic>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TextField fx:id="medicamentoA" layoutX="32.0" layoutY="111.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="medicamentoB" layoutX="32.0" layoutY="220.0" prefHeight="25.0" prefWidth="250.0" />
+      <Button fx:id="btnSalvar" layoutX="241.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Salvar" />
+      <TextArea fx:id="descricaoTextArea" layoutX="342.0" layoutY="112.0" prefHeight="134.0" prefWidth="260.0" />
+      <CheckBox fx:id="addDescricaoCheckBox" layoutX="343.0" layoutY="87.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="150.0" text="Adicionar Descrição" />
+      <Label layoutX="32.0" layoutY="87.0" text="Medicamento A :" />
+      <Label layoutX="32.0" layoutY="195.0" text="Medicamento B :" />
+   </children>
+</AnchorPane>
