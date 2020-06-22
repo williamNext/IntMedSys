@@ -58,7 +58,11 @@ public class AdicionaMedicamentoController implements Initializable, ScreenManag
         }else{
             Alert confirm = makeAlert(Alert.AlertType.WARNING, "ATENÇÃO", AlertMessages.MESSAGE_SAVE_MED_CONFIRMATION.getMessage());
             Optional<ButtonType> result = confirm.showAndWait();
-            result.ifPresent(r->saveMedicamento(nomeMedicamento.getText()));
+            result.ifPresent(r-> {
+                if(result.get() == ButtonType.OK){
+                   saveMedicamento(nomeMedicamento.getText());
+                }
+            });
         }
     }
 

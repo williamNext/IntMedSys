@@ -7,24 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class InteracaoMedicamentosaService {
     @Autowired InteracaoMedicamentosaRepository interacaoMedicamentosaRepository;
     @Autowired MedicamentoService medicamentoService;
 
-    public Optional<InteracaoMedicamentosa> getInteracao(String medA, String medB){
+
+    public Optional<InteracaoMedicamentosa> getInteracaoNames(String medA, String medB){
         LinkedList<Medicamento> meds = medicamentoService.getMedicamentos(medA, medB);
         Optional<InteracaoMedicamentosa> interactions = interacaoMedicamentosaRepository.findInteraction(meds.getFirst().getId(), meds.getLast().getId());
         return interactions;
     }
 
     public List<Long> getInteractionList(Long id){
-//        return interacaoMedicamentosaRepository.findAll().stream()
-//                .filter(med ->  med.getIdMedicamentoA()==id)
-//                .map(InteracaoMedicamentosa::getIdMedicamentob)
-//                .collect(Collectors.toList());
         ArrayList<Long> listaIds = new ArrayList<Long>();
         interacaoMedicamentosaRepository.findAllInteractions(id).stream()
                 .forEach(e->{
@@ -39,5 +35,14 @@ public class InteracaoMedicamentosaService {
 
     public void saveInteraction(String descricao,long idMedA, long idMedB){
           interacaoMedicamentosaRepository.save(new InteracaoMedicamentosa(descricao,idMedA,idMedB));
+    }
+
+    public Optional<InteracaoMedicamentosa> getInteracao(LinkedList<Medicamento> meds) {
+        return interacaoMedicamentosaRepository.findInteraction(meds.getFirst().getId(), meds.getLast().getId());
+    }
+
+    public void removeInteraction(LinkedList<Medicamento> medicamentos) {
+        Optional<InteracaoMedicamentosa> interaction = interacaoMedicamentosaRepository.findInteraction(medicamentos.getFirst().getId(), medicamentos.getLast().getId());
+        interacaoMedicamentosaRepository.delete(interaction.get());
     }
 }

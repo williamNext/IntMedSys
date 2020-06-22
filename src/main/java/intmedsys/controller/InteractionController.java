@@ -69,12 +69,14 @@ public class InteractionController implements Initializable, ScreenManager, Aler
 
     private void checkInteraction() {
         Optional<InteracaoMedicamentosa> interacao = interacaoMedicamentosaService
-                                                    .getInteracao(medicamentoA.getText(), medicamentoB.getText());
+                                                    .getInteracaoNames(medicamentoA.getText(), medicamentoB.getText());
         if (interacao.isPresent()) {
+            descricaoField.setText(interacao.get().getDescricao());
             statusLabel.setText("COM INTERAÇÃO");
             statusLabel.setTextFill(Paint.valueOf("#ff1808"));
             makeAlert(Alert.AlertType.WARNING, "Atenção", AlertMessages.MESSAGE_HAS_INTERACTION.getMessage()).show();
         }else{
+            descricaoField.setText("");
             statusLabel.setText("SEM INTERAÇÃO");
             statusLabel.setTextFill(Paint.valueOf("#75db00"));
             makeAlert(Alert.AlertType.INFORMATION, "Atenção", AlertMessages.MESSAGE_NO_INTERACTION.getMessage()).show();

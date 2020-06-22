@@ -76,7 +76,7 @@ public class AdicionaInteracaoController  implements Initializable, ScreenManage
     }
 
     private boolean canSaveInteraction(LinkedList<Medicamento> medicamentos){
-        Optional<InteracaoMedicamentosa> interacao = interacaoMedicamentosaService.getInteracao(
+        Optional<InteracaoMedicamentosa> interacao = interacaoMedicamentosaService.getInteracaoNames(
                 medicamentos.getFirst().getNome(), medicamentos.getLast().getNome());
         if(interacao.isEmpty()) {
             interacaoMedicamentosaService.saveInteraction(descricaoTextArea.getText(),medicamentos.getFirst().getId(), medicamentos.getLast().getId());
