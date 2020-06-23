@@ -48,6 +48,7 @@ public class AdicionaInteracaoController  implements Initializable, ScreenManage
         btnSalvar.setOnAction(ev->tryToSaveInteraction().show());
         addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
         removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
+        removeMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.REMOVE_MEDICAMENTO));
     }
 
     private Alert tryToSaveInteraction() {

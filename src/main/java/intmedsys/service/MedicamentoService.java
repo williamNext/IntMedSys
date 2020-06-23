@@ -49,4 +49,8 @@ public class MedicamentoService {
     public List<Medicamento> getAll(){
         return medicametoRepository.findAll();
     }
+
+    public void delete(Medicamento medicamento) {
+        medicametoRepository.delete(medicamento);
+    }
 }

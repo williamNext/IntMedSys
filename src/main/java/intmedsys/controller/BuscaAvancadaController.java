@@ -44,7 +44,7 @@ public class BuscaAvancadaController implements Initializable, ScreenManager {
         buscaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
 
         buscar.setOnAction(actionEvent -> searchInteractionList());
-
+        removeMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.REMOVE_MEDICAMENTO));
         tabela.setOnMouseClicked(this::refreshTableList);
         addInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
         addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));

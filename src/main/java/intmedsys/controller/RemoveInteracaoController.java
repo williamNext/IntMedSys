@@ -41,6 +41,7 @@ public class RemoveInteracaoController implements Initializable, ScreenManager, 
         addInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
         buscaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
         addMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
+        removeMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.REMOVE_MEDICAMENTO));
         removeBtn.setOnAction(actionEvent -> checaErros(medicamentoA,medicamentoB));
     }
     private void checaErros(TextField a, TextField b){

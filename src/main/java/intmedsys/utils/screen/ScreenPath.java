@@ -6,7 +6,7 @@ public enum ScreenPath {
     ADICIONA_MEDICAMENTO("/fxml/adicionaMedicamento.fxml"),
     ADICIONA_INTERACAO("/fxml/adicionaInteracao.fxml"),
     REMOVE_INTERACAO("/fxml/removeInteracao.fxml"),
-    REMOVE_MEDICAMENTO("X");
+    REMOVE_MEDICAMENTO("/fxml/removeMedicamento.fxml");
 
     private String path;
 
