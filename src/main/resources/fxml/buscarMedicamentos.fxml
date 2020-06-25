@@ -1,17 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="intmedsys.controller.InteractionController">
+
+<AnchorPane prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="intmedsys.controller.InteractionController">
     <children>
-        <MenuBar prefHeight="25.0" prefWidth="640.0">
+        <MenuBar prefHeight="25.0" prefWidth="640.0" style="-fx-background-color: #0af7df;">
             <menus>
                 <Menu>
                     <graphic>
@@ -42,7 +43,7 @@
         <Label layoutX="25.0" layoutY="160.0" text="Medicamento B:" />
         <TextArea fx:id="descricaoField" layoutX="320.0" layoutY="82.0" prefHeight="119.0" prefWidth="279.0" />
         <Label layoutX="320.0" layoutY="61.0" text="Descrição:" />
-        <Button fx:id="buscar" layoutX="19.0" layoutY="272.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Buscar" />
+        <Button fx:id="buscar" layoutX="19.0" layoutY="272.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #0af7df;" styleClass="0af7df" text="Buscar" />
         <Label layoutX="320.0" layoutY="221.0" text="STATUS:">
             <font>
                 <Font size="13.0" />

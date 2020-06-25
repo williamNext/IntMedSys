@@ -4,10 +4,11 @@ spring:
       enabled: true
       path: /h2
   datasource:
-    url: jdbc:h2:file:./data/intmedsysDB;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;AUTO_SERVER=TRUE;
+    url: jdbc:h2:file:~/intmedsysDB;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;AUTO_SERVER=TRUE;mode=MySQL;
     username: sa
     password:
     driverClassName: org.h2.Driver
+    sql-script-encoding: UTF-8
   jpa:
     hibernate:
       ddl-auto: update

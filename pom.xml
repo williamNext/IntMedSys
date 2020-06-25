@@ -10,12 +10,12 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>intmedsys</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>intmedsys</name>
-	<description>Demo project for Spring Boot</description>
+	<version>0.0.3-SNAPSHOT</version>
+	<name>DrugSys</name>
+
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.verssion>11</java.verssion>
 	</properties>
 
 
