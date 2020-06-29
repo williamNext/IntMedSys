@@ -28,8 +28,8 @@ public class AdicionaInteracaoController  implements Initializable, ScreenManage
     @FXML private Button btnSalvar;
     @FXML private TextArea descricaoTextArea;
     @FXML private CheckBox addDescricaoCheckBox;
-    @FXML private Label buscaMenuItem;
-    @FXML private Label buscaAvancadaMenuItem;
+    @FXML private MenuItem buscaMenuItem;
+    @FXML private MenuItem buscaAvancadaMenuItem;
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
     @FXML private  MenuItem addMedMenuItem;
@@ -42,8 +42,8 @@ public class AdicionaInteracaoController  implements Initializable, ScreenManage
         TextFields.bindAutoCompletion(medicamentoA, medicamentoService.getAllMedsNames());
         TextFields.bindAutoCompletion(medicamentoB, medicamentoService.getAllMedsNames());
         descricaoTextArea.setDisable(true);
-        buscaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
-        buscaAvancadaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
+        buscaMenuItem.setOnAction(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
+        buscaAvancadaMenuItem.setOnAction(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
         addDescricaoCheckBox.setOnAction(this::setDescriptionAvailable);
         btnSalvar.setOnAction(ev->tryToSaveInteraction().show());
         addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
@@ -58,7 +58,7 @@ public class AdicionaInteracaoController  implements Initializable, ScreenManage
                 if(medicamentos.getFirst().getId() == medicamentos.getLast().getId())
                     return makeAlert(Alert.AlertType.ERROR,"ERRO", AlertMessages.MESSAGE_SAME_NAME_FAIL.getMessage());
                 if(canSaveInteraction(medicamentos))
-                    return makeAlert(Alert.AlertType.CONFIRMATION,"SUCESSO", AlertMessages.MESSAGE_SUCESS_SAVE_INTERACTION.getMessage());
+                    return makeAlert(Alert.AlertType.INFORMATION,"SUCESSO", AlertMessages.MESSAGE_SUCESS_SAVE_INTERACTION.getMessage());
                 else
                    return  makeAlert(Alert.AlertType.ERROR,"ERRO", AlertMessages.MESSAGE_ALREADY_HAS_INTERACTION.getMessage());
             }catch (Exception e){

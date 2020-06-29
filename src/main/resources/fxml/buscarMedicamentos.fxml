@@ -14,22 +14,14 @@
     <children>
         <MenuBar prefHeight="25.0" prefWidth="640.0" style="-fx-background-color: #0af7df;">
             <menus>
-                <Menu>
-                    <graphic>
-                        <Label fx:id="buscaMenuItem" text="Busca" />
-                    </graphic>
-                </Menu>
-                <Menu>
-                    <graphic>
-                        <Label fx:id="buscaAvancadaMenuItem" text="Busca Avançada" />
-                    </graphic>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Editar Interações">
+                <Menu mnemonicParsing="false" text="Incompatibilidades">
                     <items>
-                        <MenuItem fx:id="addInteracaoMenuItem" mnemonicParsing="false" text="Adicionar Interação" />
-                        <MenuItem fx:id="removeInteracaoMenuItem" mnemonicParsing="false" text="Remover Interação" />
+                        <MenuItem fx:id="buscaMenuItem" mnemonicParsing="false" text="Buscar Incompatibilidades" />
+                        <MenuItem fx:id="buscaAvancadaMenuItem" mnemonicParsing="false" text="Busca Avancada" />
+                        <MenuItem fx:id="addInteracaoMenuItem" mnemonicParsing="false" text="Adicionar Incompatibilidades" />
+                        <MenuItem fx:id="removeInteracaoMenuItem" mnemonicParsing="false" text="Remover Incompatibilidades" />
                     </items>
-                </Menu><Menu mnemonicParsing="false" text="Editar Medicamentos">
+                </Menu><Menu mnemonicParsing="false" text="Medicamentos">
                 <items>
                     <MenuItem fx:id="addMedMenuItem" mnemonicParsing="false" text="Adicionar Medicamento" />
                     <MenuItem fx:id="removeMedMenuItem" mnemonicParsing="false" text="Remover Medicamento" />

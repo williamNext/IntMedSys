@@ -1,33 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="intmedsys.controller.RemoveInteracaoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="intmedsys.controller.RemoveInteracaoController">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="640.0" style="-fx-background-color: #0af7df;">
          <menus>
-            <Menu>
-               <graphic>
-                  <Label fx:id="buscaMenuItem" text="Busca" />
-               </graphic>
-            </Menu>
-            <Menu>
-               <graphic>
-                  <Label fx:id="buscaAvancadaMenuItem" text="Busca Avançada" />
-               </graphic>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Editar Interações">
+            <Menu mnemonicParsing="false" text="Incompatibilidades">
                <items>
-                  <MenuItem fx:id="addInteracaoMenuItem" mnemonicParsing="false" text="Adicionar Interação" />
-                  <MenuItem fx:id="removeInteracaoMenuItem" mnemonicParsing="false" text="Remover Interação" />
+                  <MenuItem fx:id="buscaMenuItem" mnemonicParsing="false" text="Buscar Incompatibilidades" />
+                  <MenuItem fx:id="buscaAvancadaMenuItem" mnemonicParsing="false" text="Busca Avancada" />
+                  <MenuItem fx:id="addInteracaoMenuItem" mnemonicParsing="false" text="Adicionar Incompatibilidades" />
+                  <MenuItem fx:id="removeInteracaoMenuItem" mnemonicParsing="false" text="Remover Incompatibilidades" />
                </items>
-            </Menu><Menu mnemonicParsing="false" text="Editar Medicamentos">
+            </Menu><Menu mnemonicParsing="false" text="Medicamentos">
             <items>
                <MenuItem fx:id="addMedMenuItem" mnemonicParsing="false" text="Adicionar Medicamento" />
                <MenuItem fx:id="removeMedMenuItem" mnemonicParsing="false" text="Remover Medicamento" />
@@ -37,7 +24,7 @@
       </MenuBar>
       <TextField fx:id="medicamentoA" layoutX="146.0" layoutY="120.0" prefHeight="25.0" prefWidth="348.0" />
       <TextField fx:id="medicamentoB" layoutX="146.0" layoutY="181.0" prefHeight="25.0" prefWidth="348.0" />
-      <Button fx:id="removeBtn" layoutX="253.0" layoutY="249.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #0af7df;" text="Remover Interação" />
+      <Button fx:id="removeBtn" layoutX="235.0" layoutY="249.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: #0af7df;" text="Remover Incompatibilidade" />
       <Label layoutX="146.0" layoutY="97.0" text="Medicamento A:" />
       <Label layoutX="146.0" layoutY="156.0" text="Medicamento B:" />
    </children>

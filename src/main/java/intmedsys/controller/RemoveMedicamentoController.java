@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 
 @Component
 public class RemoveMedicamentoController implements Initializable, ScreenManager, AlertManager {
-    @FXML private Label buscaAvancadaMenuItem;
-    @FXML private Label buscaMenuItem;
+    @FXML private MenuItem buscaAvancadaMenuItem;
+    @FXML private MenuItem buscaMenuItem;
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
     @FXML private MenuItem addMedMenuItem;
@@ -43,9 +43,9 @@ public class RemoveMedicamentoController implements Initializable, ScreenManager
         colunaMedicamentos.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tabelaMedicamentos.setItems(FXCollections.observableList(setOnLoadTableList()));
         filtroBtn.setOnAction(ev -> refreshTableList(filtroTextField.getText()));
-        buscaAvancadaMenuItem.setOnMouseClicked(ev -> changeScene(ScreenPath.BUSCA_AVANCADA));
+        buscaAvancadaMenuItem.setOnAction(ev -> changeScene(ScreenPath.BUSCA_AVANCADA));
         addInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_INTERACAO));
-        buscaMenuItem.setOnMouseClicked(ev -> changeScene(ScreenPath.BUSCA_MEDICAMENTO));
+        buscaMenuItem.setOnAction(ev -> changeScene(ScreenPath.BUSCA_MEDICAMENTO));
         removeMedicamentoBtn.setOnAction(ev -> makeThings());
         removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
         addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));

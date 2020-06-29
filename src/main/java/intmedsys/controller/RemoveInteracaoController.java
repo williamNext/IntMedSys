@@ -24,8 +24,8 @@ public class RemoveInteracaoController implements Initializable, ScreenManager, 
     @FXML private TextField medicamentoA;
     @FXML private TextField medicamentoB;
     @FXML private Button removeBtn;
-    @FXML private Label buscaAvancadaMenuItem;
-    @FXML private Label buscaMenuItem;
+    @FXML private MenuItem buscaAvancadaMenuItem;
+    @FXML private MenuItem buscaMenuItem;
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
     @FXML private  MenuItem addMedMenuItem;
@@ -37,9 +37,9 @@ public class RemoveInteracaoController implements Initializable, ScreenManager, 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TextFields.bindAutoCompletion(medicamentoA, medicamentoService.getAllMedsNames());
         TextFields.bindAutoCompletion(medicamentoB, medicamentoService.getAllMedsNames());
-        buscaAvancadaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
+        buscaAvancadaMenuItem.setOnAction(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
         addInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
-        buscaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
+        buscaMenuItem.setOnAction(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
         addMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
         removeMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.REMOVE_MEDICAMENTO));
         removeBtn.setOnAction(actionEvent -> checaErros(medicamentoA,medicamentoB));

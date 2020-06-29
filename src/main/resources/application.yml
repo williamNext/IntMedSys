@@ -4,7 +4,7 @@ spring:
       enabled: true
       path: /h2
   datasource:
-    url: jdbc:h2:file:~/intmedsysDB;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;AUTO_SERVER=TRUE;mode=MySQL;
+    url: jdbc:h2:file:~/drugSys/intmedsysDB;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;AUTO_SERVER=TRUE;mode=MySQL;
     username: sa
     password:
     driverClassName: org.h2.Driver

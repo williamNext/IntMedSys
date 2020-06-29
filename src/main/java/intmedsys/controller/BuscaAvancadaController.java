@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 @Component
 public class BuscaAvancadaController implements Initializable, ScreenManager {
-    @FXML private Label buscaMenuItem;
+    @FXML private MenuItem buscaMenuItem;
     @FXML private TextField medicamento;
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
@@ -41,7 +41,7 @@ public class BuscaAvancadaController implements Initializable, ScreenManager {
         TextFields.bindAutoCompletion(medicamento, medicamentoService.getAllMedsNames());
         this.meds = medicamentoService.getAllMeds();
 
-        buscaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
+        buscaMenuItem.setOnAction(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
 
         buscar.setOnAction(actionEvent -> searchInteractionList());
         removeMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.REMOVE_MEDICAMENTO));

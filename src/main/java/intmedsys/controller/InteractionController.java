@@ -32,7 +32,7 @@ public class InteractionController implements Initializable, ScreenManager, Aler
     @FXML private TextArea descricaoField;
     @FXML private Label statusLabel;
     @FXML private Button buscar;
-    @FXML private Label buscaAvancadaMenuItem;
+    @FXML private MenuItem buscaAvancadaMenuItem;
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
     @FXML private  MenuItem addMedMenuItem;
@@ -47,7 +47,7 @@ public class InteractionController implements Initializable, ScreenManager, Aler
 
         buscar.setOnAction(event ->makeInteractionSearch());
 
-        buscaAvancadaMenuItem.setOnMouseClicked(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
+        buscaAvancadaMenuItem.setOnAction(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
 ;       addInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
         addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
         removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
@@ -72,12 +72,12 @@ public class InteractionController implements Initializable, ScreenManager, Aler
                                                     .getInteracaoNames(medicamentoA.getText(), medicamentoB.getText());
         if (interacao.isPresent()) {
             descricaoField.setText(interacao.get().getDescricao());
-            statusLabel.setText("COM INTERAÇÃO");
+            statusLabel.setText("COM INCOMPATIBILIDADE");
             statusLabel.setTextFill(Paint.valueOf("#ff1808"));
             makeAlert(Alert.AlertType.WARNING, "Atenção", AlertMessages.MESSAGE_HAS_INTERACTION.getMessage()).show();
         }else{
             descricaoField.setText("");
-            statusLabel.setText("SEM INTERAÇÃO");
+            statusLabel.setText("SEM INCOMPATIBILIDADE");
             statusLabel.setTextFill(Paint.valueOf("#75db00"));
             makeAlert(Alert.AlertType.INFORMATION, "Atenção", AlertMessages.MESSAGE_NO_INTERACTION.getMessage()).show();
         }

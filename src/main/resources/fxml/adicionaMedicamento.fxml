@@ -13,29 +13,21 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="intmedsys.controller.AdicionaMedicamentoController">
    <children>
        <MenuBar prefHeight="25.0" prefWidth="640.0" style="-fx-background-color: #0af7df;">
-           <menus>
-               <Menu>
-                   <graphic>
-                       <Label fx:id="buscaMenuItem" text="Busca" />
-                   </graphic>
-               </Menu>
-               <Menu>
-                   <graphic>
-                       <Label fx:id="buscaAvancadaMenuItem" text="Busca Avançada" />
-                   </graphic>
-               </Menu>
-               <Menu mnemonicParsing="false" text="Editar Interações">
-                   <items>
-                       <MenuItem fx:id="addInteracaoMenuItem" mnemonicParsing="false" text="Adicionar Interação" />
-                       <MenuItem fx:id="removeInteracaoMenuItem" mnemonicParsing="false" text="Remover Interação" />
-                   </items>
-               </Menu><Menu mnemonicParsing="false" text="Editar Medicamentos">
+       <menus>
+           <Menu mnemonicParsing="false" text="Incompatibilidades">
                <items>
-                   <MenuItem fx:id="addMedMenuItem" mnemonicParsing="false" text="Adicionar Medicamento" />
-                   <MenuItem fx:id="removeMedMenuItem" mnemonicParsing="false" text="Remover Medicamento" />
+                   <MenuItem fx:id="buscaMenuItem" mnemonicParsing="false" text="Buscar Incompatibilidades" />
+                   <MenuItem fx:id="buscaAvancadaMenuItem" mnemonicParsing="false" text="Busca Avancada" />
+                   <MenuItem fx:id="addInteracaoMenuItem" mnemonicParsing="false" text="Adicionar Incompatibilidades" />
+                   <MenuItem fx:id="removeInteracaoMenuItem" mnemonicParsing="false" text="Remover Incompatibilidades" />
                </items>
-           </Menu>
-           </menus>
+           </Menu><Menu mnemonicParsing="false" text="Medicamentos">
+           <items>
+               <MenuItem fx:id="addMedMenuItem" mnemonicParsing="false" text="Adicionar Medicamento" />
+               <MenuItem fx:id="removeMedMenuItem" mnemonicParsing="false" text="Remover Medicamento" />
+           </items>
+       </Menu>
+       </menus>
        </MenuBar>
       <TextField fx:id="nomeMedicamento" layoutX="30.0" layoutY="110.0" prefHeight="25.0" prefWidth="253.0" />
       <TableView fx:id="tabelaMedicamentos" layoutX="327.0" layoutY="119.0" prefHeight="237.0" prefWidth="242.0">
