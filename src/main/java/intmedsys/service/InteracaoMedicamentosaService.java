@@ -45,4 +45,16 @@ public class InteracaoMedicamentosaService {
         Optional<InteracaoMedicamentosa> interaction = interacaoMedicamentosaRepository.findInteraction(medicamentos.getFirst().getId(), medicamentos.getLast().getId());
         interacaoMedicamentosaRepository.delete(interaction.get());
     }
+
+    public List<Medicamento> parseResultList(String name){
+        List<Medicamento> meds = medicamentoService.getAllMeds();
+        Medicamento medicamento = medicamentoService.getByName(name.strip().toUpperCase());
+        ArrayList<Medicamento> listMeds = new ArrayList<Medicamento>();
+        List<Long> interactionList = getInteractionList(medicamento.getId());
+        interactionList.forEach(it->{
+            Optional<Medicamento> first = meds.stream().filter(m -> m.getId() == it).findFirst();
+            first.ifPresent(listMeds::add);
+        });
+        return listMeds;
+    }
 }
