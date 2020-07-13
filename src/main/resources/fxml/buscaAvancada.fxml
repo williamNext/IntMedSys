@@ -13,6 +13,7 @@
                   <MenuItem fx:id="buscaAvancadaMenuItem" mnemonicParsing="false" text="Busca Avancada" />
                   <MenuItem fx:id="addInteracaoMenuItem" mnemonicParsing="false" text="Adicionar Incompatibilidades" />
                   <MenuItem fx:id="removeInteracaoMenuItem" mnemonicParsing="false" text="Remover Incompatibilidades" />
+                  <MenuItem fx:id="editarInteracaoMenuItem" mnemonicParsing="false" text="Editar Incompatibilidades" />
                </items>
             </Menu><Menu mnemonicParsing="false" text="Medicamentos">
             <items>
@@ -26,7 +27,7 @@
       <TextField fx:id="medicamento" layoutX="32.0" layoutY="81.0" prefHeight="25.0" prefWidth="243.0" />
       <TableView fx:id="tabela" layoutX="331.0" layoutY="64.0" prefHeight="283.0" prefWidth="261.0">
          <columns>
-            <TableColumn fx:id="coluna" prefWidth="259.33331298828125" text="Medicamentos" />
+            <TableColumn fx:id="coluna" prefWidth="259.33331298828125" text="Incompatibilidades" />
          </columns>
       </TableView>
       <Label layoutX="32.0" layoutY="64.0" text="Medicamento" />

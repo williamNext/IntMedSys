@@ -20,6 +20,8 @@ public class InteracaoMedicamentosaService {
         return interactions;
     }
 
+
+
     public List<Long> getInteractionList(Long id){
         ArrayList<Long> listaIds = new ArrayList<Long>();
         interacaoMedicamentosaRepository.findAllInteractions(id).stream()
@@ -29,7 +31,6 @@ public class InteracaoMedicamentosaService {
                     else
                         listaIds.add(e.getIdMedicamentob());
                 });
-        System.out.println(listaIds.size());
         return listaIds;
     }
 
@@ -45,8 +46,12 @@ public class InteracaoMedicamentosaService {
         Optional<InteracaoMedicamentosa> interaction = interacaoMedicamentosaRepository.findInteraction(medicamentos.getFirst().getId(), medicamentos.getLast().getId());
         interacaoMedicamentosaRepository.delete(interaction.get());
     }
-
-    public List<Medicamento> parseResultList(String name){
+    public void saveDescription(String nameA,String nameB,String description){
+        Optional<InteracaoMedicamentosa> interacao = getInteracaoNames(nameA, nameB);
+        interacao.get().setDescricao(description);
+        interacaoMedicamentosaRepository.save(interacao.get());
+    }
+    public List<Medicamento> getInteractionsMamesList(String name){
         List<Medicamento> meds = medicamentoService.getAllMeds();
         Medicamento medicamento = medicamentoService.getByName(name.strip().toUpperCase());
         ArrayList<Medicamento> listMeds = new ArrayList<Medicamento>();
@@ -56,5 +61,13 @@ public class InteracaoMedicamentosaService {
             first.ifPresent(listMeds::add);
         });
         return listMeds;
+    }
+    public boolean getInteracaoNamesTest(String medA, String medB){
+        LinkedList<Medicamento> meds = medicamentoService.getMedicamentos(medA, medB);
+        Optional<InteracaoMedicamentosa> interactions = interacaoMedicamentosaRepository.findInteraction(meds.getFirst().getId(), meds.getLast().getId());
+        if(interactions.isPresent()){
+            return true;
+        }
+        return false;
     }
 }

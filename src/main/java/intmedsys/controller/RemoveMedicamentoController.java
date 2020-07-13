@@ -31,6 +31,7 @@ public class RemoveMedicamentoController implements Initializable, ScreenManager
     @FXML private MenuItem addMedMenuItem;
     @FXML private TextField nomeMedicamento;
     @FXML private TableView<Medicamento> tabelaMedicamentos;
+    @FXML private MenuItem editarInteracaoMenuItem;
     @FXML private TableColumn<Medicamento, String> colunaMedicamentos;
     @FXML private Button removeMedicamentoBtn;
     @FXML private TextField filtroTextField;
@@ -49,6 +50,7 @@ public class RemoveMedicamentoController implements Initializable, ScreenManager
         removeMedicamentoBtn.setOnAction(ev -> makeThings());
         removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
         addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
+        editarInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.EDITA_INTERACAO));
     }
 
     private void makeThings() {

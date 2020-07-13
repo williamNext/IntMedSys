@@ -31,7 +31,7 @@ public class IntMedSys extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/buscarMedicamentos.fxml"));
         fxmlLoader.setControllerFactory(applicationContext::getBean);
         Parent root = fxmlLoader.load();
-        primaryStage.setTitle("IntMedSys");
+        primaryStage.setTitle("DrugSys");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

@@ -27,6 +27,7 @@ public class BuscaAvancadaController implements Initializable, ScreenManager {
     @FXML private TextField medicamento;
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
+    @FXML private MenuItem editarInteracaoMenuItem;
     @FXML private  MenuItem addMedMenuItem;
     @FXML private  MenuItem removeMedMenuItem;
     @FXML private TableView<Medicamento> tabela;
@@ -49,6 +50,7 @@ public class BuscaAvancadaController implements Initializable, ScreenManager {
         addInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
         addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
         removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
+        editarInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.EDITA_INTERACAO));
     }
 
     private void searchInteractionList() {
@@ -68,14 +70,7 @@ public class BuscaAvancadaController implements Initializable, ScreenManager {
     }
 
     private List<Medicamento> parseResultList(String name){
-        Medicamento medicamento = medicamentoService.getByName(name.strip().toUpperCase());
-        ArrayList<Medicamento> listMeds = new ArrayList<Medicamento>();
-        List<Long> interactionList = interacaoMedicamentosaService.getInteractionList(medicamento.getId());
-        interactionList.forEach(it->{
-            Optional<Medicamento> first = this.meds.stream().filter(m -> m.getId() == it).findFirst();
-            first.ifPresent(listMeds::add);
-        });
-        return listMeds;
+        return interacaoMedicamentosaService.getInteractionsMamesList(name);
     }
 
 

@@ -13,6 +13,7 @@
                         <MenuItem fx:id="buscaAvancadaMenuItem" mnemonicParsing="false" text="Busca Avancada" />
                         <MenuItem fx:id="addInteracaoMenuItem" mnemonicParsing="false" text="Adicionar Incompatibilidades" />
                         <MenuItem fx:id="removeInteracaoMenuItem" mnemonicParsing="false" text="Remover Incompatibilidades" />
+                        <MenuItem fx:id="editarInteracaoMenuItem" mnemonicParsing="false" text="Editar Incompatibilidades" />
                     </items>
                 </Menu><Menu mnemonicParsing="false" text="Medicamentos">
                 <items>

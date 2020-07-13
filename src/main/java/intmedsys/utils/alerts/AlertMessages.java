@@ -10,6 +10,9 @@ public enum AlertMessages {
     MESSAGE_SAME_MED_FAIL("Já existe um medicamento com este nome na base de dados"),
     MESSAGE_SAVE_MED_CONFIRMATION("Você tem certeza que quer salvar este medicamento?"),
     MESSAGE_SAVE_MED_SUCESS("Medicamento salvo com sucesso"),
+    MESSAGE_SAVE_DESCRIPTION("A descrição foi salva com sucesso"),
+    MESSAGE_EDITAVEL_DESCRIPTION_("Existem interações entre os medicamentos, o campo descrição pode ser editado agora."),
+    MESSAGE_SAVE_DESCRIPTION_ERROR("não foi possivel salvar a descrição, verifique se os campos estão corretos"),
     MESSAGE_CONFIRM_MED_DELETE("Você tem certeza que quer deletar este medicamento?"),
     MESSAGE_MED_DELETE_SUCESS("Medicamento deletado com sucesso"),
     MESSAGE_NOT_FOUUND("O nome do medicamento está incorreto, ou este medicamento não existe nos registros. Não se esqueça de verificar acentos e erros ortográficos");

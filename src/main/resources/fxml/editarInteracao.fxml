@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="intmedsys.controller.EditaInteracaoController">
+    <children>
+        <MenuBar prefHeight="25.0" prefWidth="642.0" style="-fx-background-color: #0af7df;">
+            <menus>
+                <Menu mnemonicParsing="false" text="Incompatibilidades">
+                    <items>
+                        <MenuItem fx:id="buscaMenuItem" mnemonicParsing="false" text="Buscar Imcompatibilidade" />
+                        <MenuItem fx:id="buscaAvancadaMenuItem" mnemonicParsing="false" text="Busca Avançada" />
+                        <MenuItem fx:id="addInteracaoMenuItem" mnemonicParsing="false" text="Adicionar Incompatibilidades" />
+                        <MenuItem fx:id="removeInteracaoMenuItem" mnemonicParsing="false" text="Remover Incompatibilidades" />
+                        <MenuItem fx:id="editarInteracaoMenuItem" mnemonicParsing="false" text="Editar Incompatibilidades" />
+                    </items>
+                </Menu><Menu mnemonicParsing="false" text="Medicamentos">
+                <items>
+                    <MenuItem fx:id="addMedMenuItem" mnemonicParsing="false" text="Adicionar Medicamento" />
+                    <MenuItem fx:id="removeMedMenuItem" mnemonicParsing="false" text="Remover Medicamento" />
+                </items>
+            </Menu>
+            </menus>
+        </MenuBar>
+        <TextField fx:id="medicamentoA" layoutX="32.0" layoutY="111.0" prefHeight="25.0" prefWidth="250.0" />
+        <TextField fx:id="medicamentoB" layoutX="32.0" layoutY="220.0" prefHeight="25.0" prefWidth="250.0" />
+        <Button fx:id="btnSalvar" layoutX="242.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #0af7df;" text=" Salvar Edição" />
+        <TextArea fx:id="descricaoTextArea" layoutX="342.0" layoutY="112.0" prefHeight="134.0" prefWidth="260.0" promptText="clique em Buscar Incompatibilidade para editar sua descrição" />
+        <Label layoutX="32.0" layoutY="87.0" text="Medicamento A :" />
+        <Label layoutX="32.0" layoutY="195.0" text="Medicamento B :" />
+      <Button fx:id="buscarBtn" layoutX="32.0" layoutY="264.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" style="-fx-background-color: #0af7df;" text="Buscar Incompatibilidade" />
+      <Label layoutX="342.0" layoutY="87.0" text="Editar descrição:" />
+    </children>
+</AnchorPane>

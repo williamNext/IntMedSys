@@ -33,6 +33,7 @@ public class InteractionController implements Initializable, ScreenManager, Aler
     @FXML private Label statusLabel;
     @FXML private Button buscar;
     @FXML private MenuItem buscaAvancadaMenuItem;
+    @FXML private MenuItem editarInteracaoMenuItem;
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
     @FXML private  MenuItem addMedMenuItem;
@@ -44,7 +45,7 @@ public class InteractionController implements Initializable, ScreenManager, Aler
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TextFields.bindAutoCompletion(medicamentoA, this.getAll());
         TextFields.bindAutoCompletion(medicamentoB, this.getAll());
-
+        this.descricaoField.setEditable(false);
         buscar.setOnAction(event ->makeInteractionSearch());
 
         buscaAvancadaMenuItem.setOnAction(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
@@ -52,6 +53,7 @@ public class InteractionController implements Initializable, ScreenManager, Aler
         addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
         removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
         removeMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.REMOVE_MEDICAMENTO));
+        editarInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.EDITA_INTERACAO));
     }
 
     private void makeInteractionSearch() {

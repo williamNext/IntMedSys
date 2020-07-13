@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 public class AdicionaMedicamentoController implements Initializable, ScreenManager, AlertManager {
     @FXML private MenuItem buscaAvancadaMenuItem;
     @FXML private MenuItem buscaMenuItem;
+    @FXML private MenuItem editarInteracaoMenuItem;
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
     @FXML private  MenuItem addMedMenuItem;
@@ -48,6 +49,7 @@ public class AdicionaMedicamentoController implements Initializable, ScreenManag
         addMedicamentoBtn.setOnAction(ev-> makeThings());
         addInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.ADICIONA_INTERACAO));
         removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
+        editarInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.EDITA_INTERACAO));
     }
 
     private void makeThings() {

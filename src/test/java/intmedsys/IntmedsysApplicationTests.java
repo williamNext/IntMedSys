@@ -23,22 +23,7 @@ class IntmedsysApplicationTests {
 	InteracaoMedicamentosaRepository interacaoMedicamentosaRepository;
 	@Autowired
 	InteracaoMedicamentosaService interacaoMedicamentosaService;
-	@Autowired
-	private BuscaAvancadaController busca;
-	@Test
-	void contextLoads() {
-//		Optional<InteracaoMedicamentosa> medicamentoB = interacaoMedicamentosaRepository.findByIdMedicamentoAAnAndIdMedicamentob(1,5);
-//
-//		if(medicamentoB.isPresent())
-//			System.out.println(medicamentoB.get());
-	}
-	@Test
-	void teste(){
-//		Optional<InteracaoMedicamentosa> interacaoByid = interacaoMedicamentosaService.getInteracaoByid(1, 3);
-//		if(interacaoByid.isPresent()){
-//			System.out.println(interacaoByid.get().getIdMedicamentoA());
-//			System.out.println(interacaoByid.get().getIdMedicamentob());}
-	}
+
 	@Test
 	void testaBuscaListaInteracoes(){
 //
@@ -104,16 +89,17 @@ class IntmedsysApplicationTests {
 		Set <String> interativos = new HashSet<>();
 		Set <String> naoInterativos = new HashSet<>();
 		ArrayList<Integer> integers = new ArrayList<>();
+		ArrayList<String> marcacoes = new ArrayList<>();
 		int count = 0;
-		for (String[] item: strings) {
-			List<Medicamento> medicamentos = interacaoMedicamentosaService.parseResultList(item[0]);
-			for (int i = 1; i < item.length ; i++) {
+		for (String[] prescricoes: strings) {
+
+			for (int i = 0; i < prescricoes.length ; i++) {
 				boolean flag = false;
-				for (Medicamento med : medicamentos){
-					if(item[i].equalsIgnoreCase(med.getNome())){
-						interativos.add(String.join(";",item));
+				for (int j = 0; j < prescricoes.length ; j++){
+					if(interacaoMedicamentosaService.getInteracaoNamesTest(prescricoes[i],prescricoes[j])){
+						marcacoes.add("("+prescricoes[i]+";"+prescricoes[j]+") referente a item "+String.join(";",prescricoes));
+						interativos.add(String.join(";",prescricoes));
 						integers.add(count);
-						break;
 					}
 				}
 			}
@@ -124,15 +110,16 @@ class IntmedsysApplicationTests {
 					naoInterativos.add(String.join(";",s));
 			}
 		});
+		System.out.println("*****************************");
 		System.out.println(interativos.size());
+		System.out.println("*****************************");
 		System.out.println(naoInterativos.size());
+		System.out.println("*****************************");
 		System.out.println("------INTERATIVOS-----------");
 		interativos.forEach(System.out::println);
 		System.out.println("------NÃOINTERATIVOS-----------");
 		naoInterativos.forEach(System.out::println);
-
-//		interativos.forEach(e-> System.out.println(e.toString()));
-//		interacaoMedicamentosaService.getInteractionList();
-
+		System.out.println("*****************************");
+		marcacoes.forEach(System.out::println);
 	}
 }

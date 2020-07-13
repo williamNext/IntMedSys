@@ -29,6 +29,7 @@ public class RemoveInteracaoController implements Initializable, ScreenManager, 
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
     @FXML private  MenuItem addMedMenuItem;
+    @FXML private MenuItem editarInteracaoMenuItem;
     @FXML private  MenuItem removeMedMenuItem;
     @Autowired InteracaoMedicamentosaService interacaoMedicamentosaService;
     @Autowired MedicamentoService medicamentoService;
@@ -43,6 +44,7 @@ public class RemoveInteracaoController implements Initializable, ScreenManager, 
         addMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
         removeMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.REMOVE_MEDICAMENTO));
         removeBtn.setOnAction(actionEvent -> checaErros(medicamentoA,medicamentoB));
+        editarInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.EDITA_INTERACAO));
     }
     private void checaErros(TextField a, TextField b){
         if(!isVazio(medicamentoA) && !isVazio(medicamentoB)){

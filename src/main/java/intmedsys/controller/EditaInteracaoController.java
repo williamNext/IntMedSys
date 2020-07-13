@@ -8,7 +8,6 @@ import intmedsys.utils.alerts.AlertManager;
 import intmedsys.utils.alerts.AlertMessages;
 import intmedsys.utils.screen.ScreenManager;
 import intmedsys.utils.screen.ScreenPath;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -20,72 +19,98 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 @Component
-public class AdicionaInteracaoController  implements Initializable, ScreenManager, AlertManager {
+public class EditaInteracaoController implements Initializable, ScreenManager, AlertManager {
     @FXML private TextField medicamentoA;
     @FXML private TextField medicamentoB;
     @FXML private Button btnSalvar;
+    @FXML private Button buscarBtn;
     @FXML private TextArea descricaoTextArea;
-    @FXML private CheckBox addDescricaoCheckBox;
-    @FXML private MenuItem editarInteracaoMenuItem;
     @FXML private MenuItem buscaMenuItem;
     @FXML private MenuItem buscaAvancadaMenuItem;
     @FXML private MenuItem removeInteracaoMenuItem;
     @FXML private MenuItem addInteracaoMenuItem;
     @FXML private  MenuItem addMedMenuItem;
     @FXML private  MenuItem removeMedMenuItem;
-    @Autowired private InteracaoMedicamentosaService interacaoMedicamentosaService;
-    @Autowired MedicamentoService medicamentoService;
+    @Autowired
+    private InteracaoMedicamentosaService interacaoMedicamentosaService;
+    @Autowired
+    MedicamentoService medicamentoService;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TextFields.bindAutoCompletion(medicamentoA, medicamentoService.getAllMedsNames());
         TextFields.bindAutoCompletion(medicamentoB, medicamentoService.getAllMedsNames());
         descricaoTextArea.setDisable(true);
+        this.btnSalvar.setDisable(true);
         buscaMenuItem.setOnAction(ev->changeScene(ScreenPath.BUSCA_MEDICAMENTO));
         buscaAvancadaMenuItem.setOnAction(ev->changeScene(ScreenPath.BUSCA_AVANCADA));
-        addDescricaoCheckBox.setOnAction(this::setDescriptionAvailable);
-        btnSalvar.setOnAction(ev->tryToSaveInteraction().show());
+        buscarBtn.setOnAction(ev-> buscaInteraction().show());
         addMedMenuItem.setOnAction(ev -> changeScene(ScreenPath.ADICIONA_MEDICAMENTO));
+        addInteracaoMenuItem.setOnAction(ev-> changeScene(ScreenPath.ADICIONA_INTERACAO));
         removeInteracaoMenuItem.setOnAction(ev -> changeScene(ScreenPath.REMOVE_INTERACAO));
         removeMedMenuItem.setOnAction(actionEvent -> changeScene(ScreenPath.REMOVE_MEDICAMENTO));
-        editarInteracaoMenuItem.setOnAction(ev->changeScene(ScreenPath.EDITA_INTERACAO));
+        btnSalvar.setOnAction(ev->saveDescription());
     }
 
-    private Alert tryToSaveInteraction() {
+    private Alert buscaInteraction() {
         if(!medicamentoA.getText().isBlank() && !medicamentoB.getText().isBlank()){
             try{
                 LinkedList<Medicamento> medicamentos = medicamentoService.getMedicamentos(medicamentoA.getText(), medicamentoB.getText());
-                if(medicamentos.getFirst().getId() == medicamentos.getLast().getId())
-                    return makeAlert(Alert.AlertType.ERROR,"ERRO", AlertMessages.MESSAGE_SAME_NAME_FAIL.getMessage());
-                if(canSaveInteraction(medicamentos))
-                    return makeAlert(Alert.AlertType.INFORMATION,"SUCESSO", AlertMessages.MESSAGE_SUCESS_SAVE_INTERACTION.getMessage());
-                else
-                   return  makeAlert(Alert.AlertType.ERROR,"ERRO", AlertMessages.MESSAGE_ALREADY_HAS_INTERACTION.getMessage());
+                if(hasInteraction(medicamentos)){
+                    setDescriptionAvailable(true);
+                    return makeAlert(Alert.AlertType.INFORMATION,"ATENÇÃO", AlertMessages.MESSAGE_EDITAVEL_DESCRIPTION_.getMessage());}
+                else{
+                    clearFields();
+                    setDescriptionAvailable(false);
+                    return  makeAlert(Alert.AlertType.ERROR,"ERRO", AlertMessages.MESSAGE_NO_INTERACTION.getMessage());}
             }catch (Exception e){
+                clearFields();
                 return makeAlert(Alert.AlertType.ERROR,"ERRO", AlertMessages.MESSAGE_NOT_FOUUND.getMessage());
             }
         }
+        clearFields();
         return makeAlert(Alert.AlertType.WARNING,"ATENÇÃO", AlertMessages.MESSAGE_BLANK_SPACE.getMessage());
     }
 
-    private void setDescriptionAvailable(ActionEvent actionEvent) {
-        if(addDescricaoCheckBox.isSelected()){
-            descricaoTextArea.setDisable(false);}
+    private void setDescriptionAvailable(boolean isLiberated){
+        if(isLiberated){
+            descricaoTextArea.setDisable(false);
+            this.btnSalvar.setDisable(false);
+        }
         else{
             descricaoTextArea.setDisable(true);
-            descricaoTextArea.setText("");}
+            descricaoTextArea.setText("");
+            this.medicamentoA.setText("");
+            this.medicamentoB.setText("");
+        }
+    }
+    private void saveDescription(){
+        try {
+            LinkedList<Medicamento> medicamentos = medicamentoService.getMedicamentos(medicamentoA.getText(), medicamentoB.getText());
+            interacaoMedicamentosaService.saveDescription(medicamentos.getFirst().getNome(),medicamentos.getLast().getNome(),this.descricaoTextArea.getText());
+            makeAlert(Alert.AlertType.INFORMATION,"SUCESSO",AlertMessages.MESSAGE_SAVE_DESCRIPTION.getMessage()).show();
+        }catch (Exception e){
+            makeAlert(Alert.AlertType.ERROR,"ERRO",AlertMessages.MESSAGE_SAVE_DESCRIPTION_ERROR.getMessage()).show();
+        }
+        clearFields();
     }
 
-    private boolean canSaveInteraction(LinkedList<Medicamento> medicamentos){
+    private void clearFields() {
+        this.medicamentoB.setText("");
+        this.medicamentoA.setText("");
+        this.btnSalvar.setDisable(true);
+        this.descricaoTextArea.setDisable(true);
+        this.descricaoTextArea.setText("");
+    }
+
+    private boolean hasInteraction(LinkedList<Medicamento> medicamentos){
         Optional<InteracaoMedicamentosa> interacao = interacaoMedicamentosaService.getInteracaoNames(
                 medicamentos.getFirst().getNome(), medicamentos.getLast().getNome());
-        if(interacao.isEmpty()) {
-            interacaoMedicamentosaService.saveInteraction(descricaoTextArea.getText(),medicamentos.getFirst().getId(), medicamentos.getLast().getId());
+        if(interacao.isPresent()){
+            this.descricaoTextArea.setText(interacao.get().getDescricao());
             return true;
         }
         return false;
     }
-
 }
