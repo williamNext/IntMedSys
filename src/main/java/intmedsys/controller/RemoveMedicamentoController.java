@@ -40,7 +40,7 @@ public class RemoveMedicamentoController implements Initializable, ScreenManager
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TextFields.bindAutoCompletion( nomeMedicamento, medicamentoService.getAll());
+        TextFields.bindAutoCompletion( nomeMedicamento, medicamentoService.getAllMedsNames());
         colunaMedicamentos.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tabelaMedicamentos.setItems(FXCollections.observableList(setOnLoadTableList()));
         filtroBtn.setOnAction(ev -> refreshTableList(filtroTextField.getText()));
